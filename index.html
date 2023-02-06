@@ -63,7 +63,18 @@ a:active{
 
 </style>
 
-{% include './navbar.html' %}
+<!--Navigation bar-->
+<div id="nav-placeholder">
+
+</div>
+
+<script>
+$(function(){
+  $("#nav-placeholder").load("./navbar.html");
+});
+</script>
+<!--end of Navigation bar-->
+
 <link rel="stylesheet" href="./styles/style.css">
 <title>Home</title>
 <body>
