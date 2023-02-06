@@ -1,0 +1,92 @@
+<html>
+
+<head>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+
+    var bgArray = ['1.png', '2.png', '3.png', '4.png', '5.png', '6.png', '7.png', '8.png'];
+
+    // If you have defined a path for the images
+    var path = '../static/Images/';
+ 
+    var bg_start = bgArray[Math.floor(Math.random() * bgArray.length)];
+
+    // then you can put it right before the variable 'bg'
+    $('body').css('transition', '1s');
+    $('body').css('background-image', "url('" + path+bg_start + "')");
+    $('body').css('background-color', 'transparent');
+    $('body').css('background-size', 'cover');
+
+    function nextBackground() {
+        var bg = bgArray[Math.floor(Math.random() * bgArray.length)];
+	$('body').css('transition', '1s');
+        $('body').css('background-image', "url('" + path+bg + "')");
+        $('body').css('background-color', 'transparent');
+        $('body').css('background-size', 'cover');
+        setTimeout(nextBackground, 10000);
+    }
+    setTimeout(nextBackground, 10000);
+
+}); 
+</script>  
+
+</head>
+
+<style>
+
+a:link{
+	color: white;
+	background-color: transparent;
+	text-decoration: underline;
+}
+
+a:visited{
+        color: white;
+        background-color: transparent;
+        text-decoration: underline;
+}
+
+a:hover{
+        color: white;
+        background-color: transparent;
+        text-decoration: underline;
+}
+
+a:active{
+        color: white;
+        background-color: white;
+        text-decoration: underline;
+}
+
+</style>
+
+{% load static %}
+{% include 'navbar.html' %}
+<link rel="stylesheet" href="{% static 'styles/style.css' %}">
+<title>Home</title>
+<body>
+<div class="preload-images"></div>
+<section class="home">
+
+<p> 
+Email: rahul.ramesh@stud.uni-heidelberg.de
+
+<br>
+<br>
+<br>
+
+Address: Institut fur Theoretische Astrophysiks (ITA)
+	<br>
+         &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Albert-Ueberle-Str.2
+         <br>
+	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Heidelberg-69120
+        <br>
+	 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Germany
+</p>
+
+</section>
+</body> 
+</html>

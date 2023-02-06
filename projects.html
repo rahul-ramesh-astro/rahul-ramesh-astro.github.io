@@ -1,0 +1,109 @@
+<html>
+
+<head>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+
+    var bgArray = ['1.png', '2.png', '3.png', '4.png', '5.png', '6.png', '7.png', '8.png'];
+
+    // If you have defined a path for the images
+    var path = '../static/Images/';
+ 
+    var bg_start = bgArray[Math.floor(Math.random() * bgArray.length)];
+
+    // then you can put it right before the variable 'bg'
+    $('body').css('transition', '1s');
+    $('body').css('background-image', "url('" + path+bg_start + "')");
+    $('body').css('background-color', 'transparent');
+    $('body').css('background-size', 'cover');
+
+    function nextBackground() {
+        var bg = bgArray[Math.floor(Math.random() * bgArray.length)];
+	$('body').css('transition', '1s');
+        $('body').css('background-image', "url('" + path+bg + "')");
+        $('body').css('background-color', 'transparent');
+        $('body').css('background-size', 'cover');
+        setTimeout(nextBackground, 10000);
+    }
+    setTimeout(nextBackground, 10000);
+
+}); 
+</script>  
+
+</head>
+
+<style>
+
+a:link{
+	color: white;
+	background-color: transparent;
+	text-decoration: underline;
+}
+
+a:visited{
+        color: white;
+        background-color: transparent;
+        text-decoration: underline;
+}
+
+a:hover{
+        color: white;
+        background-color: transparent;
+        text-decoration: underline;
+}
+
+a:active{
+        color: white;
+        background-color: white;
+        text-decoration: underline;
+}
+
+</style>
+
+{% load static %}
+{% include 'navbar.html' %}
+<link rel="stylesheet" href="{% static 'styles/style.css' %}">
+<title>Projects</title>
+<body>
+<div class="preload-images"></div>
+<section class="home">
+				
+<p>
+
+A complete list of publications that I have contributed to can be accessed here: <a href="https://scholar.google.co.in/citations?user=-QDDZh0AAAAJ&hl=en">Google Scholar</a>/<a href="https://orcid.org/0000-0002-7259-7454">ORCID</a>/<a href="https://ui.adsabs.harvard.edu/search/q=orcid%3A0000-0002-7259-7454&sort=date%20desc%2C%20bibcode%20desc&p_=0">NASA ADS</a>.  
+
+<br>
+<br>
+<br>
+
+The following are projects that I've played a lead role in:
+
+<br>
+<br>
+<br>
+
+<b><u>Ongoing/Future Projects:</u></b>
+<p>
+<img src="{% static 'images/paper1_fig2.pdf' %}" style="float:right; margin-left: 10px;" width="400" height="400">
+<u>The Circumgalactic Medium of TNG50 Milky Way-like Galaxies</u>: We use the TNG50 simulation of the <a href="https://www.tng-project.org">IllustrisTNG</a> project to study the circumgalactic medium of a set of 132 galaxies that are selected based on their resemblance with the 'real' Milky Way. In <a href="https://ui.adsabs.harvard.edu/abs/2023MNRAS.518.5754R/abstract">Paper I</a>, we analyzed various physical properties of gas: (i) integrated properties across the halo, and (ii) radial profiles. Both show large varitation across our sample of galaxies, as can be visualised in this <a href="https://www.tng-project.org/explore/gallery/ramesh22/">infinite gallery</a>, as a combined result of many factors. One of these factors is the feedback energy injected by the central supermassive black hole (SMBH), which we explore in this paper: in TNG50, kinetic winds driven by the SMBH heat gas to super-virial temperatures, generate high-velocity outflows, and regulate the net balance of inflows versus outflows in otherwise quasi-static halos. In <u>Paper II</u> (in prep), we focus on cold, dense clouds of gas in these CGMs; more to follow soon!   
+</p>
+
+<br>
+<br>
+<br>
+
+<b><u>Past Projects:</u></b>
+<p>
+<img src="{% static 'images/ccsn_gw.jpeg' %}" style="float:right; margin-left: 10px;" width="485" height="400">
+<u>Gravitational Lensing of Gravitational Waves</u>: Akin to electromagnetic radiation, gravitational waves are deflected by 'massive' objects as they propogate past them. However, their wavelengths are typically larger than their electromagnetic counterparts. As a result, in certain cases, their wave nature cannot be ignored, like is usually done while studying lensing of electromagnetic waves. In this project, we study the impact that these 'wave effects' have on observed signals. In <a href="https://ui.adsabs.harvard.edu/abs/2022JApA...43....5R/abstract">Paper I</a>, we focussed on the (micro-)lensing of stochastic gravitational waves, similar to those produced during core-collapse supernovae. In addition, we explored more complicated scenarios of lensing, wherein matter responsible for producing the above mentioned lensing effects are distributed along multiple lens planes (<a href="https://ui.adsabs.harvard.edu/abs/2022JApA...43...38R/abstract">Paper II</a>).  
+</p>
+
+
+</p>
+
+</section>
+</body> 
+</html>
