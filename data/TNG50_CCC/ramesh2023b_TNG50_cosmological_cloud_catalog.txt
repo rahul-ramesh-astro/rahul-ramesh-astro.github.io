@@ -1,40 +1,42 @@
 This file summarises the contents of the TNG50 "Cosmological Cloud Catalog", presented and used in Ramesh+(2023b).
 
-The (hdf5) file consists of various datasets. Each dataset is an array of length 119895, and each entry corresponds to a given cloud. Clouds here are defined as contigous sets of Voronoi cells that are cold (T < 10^{4.5}K). Refer to Ramesh+(2023b) for more details.
+The (hdf5) file consists of various datasets. Each dataset is an array of length 119895, and each entry corresponds to a given cloud. Clouds here are defined as contigous sets of Voronoi cells that are cold (T <= 10^{4.5}K). Refer to Ramesh+(2023b) for more details.
 
 01. CloudNumCells: Number of "member" Voronoi cells in the cloud. Fiducial choice in Ramesh+(2023b) corresponds to a minimum of 10 member cells per cloud. 
 02. CloudMass: Total mass of the cloud (units: M_\odot).
 03. CloudSize: Size of the cloud (units: kpc). The size here is the geometric mean of the lengths of the three axes of the ellipsoid to which vertices of member Voronoi cells are fitted. Refer to Ramesh+(2023b) for more details.
 04. CloudDist: Galactocentric distance of (the centre of mass of) this cloud (units: kpc).
+05. CloudLat: Latitude of (the centre of mass of) this cloud (units: rad).
+06. CloudLon: Longitude of (the centre of mass of) this cloud (units: rad).
 
-05. CloudTemp: Mean temperature of all Voronoi cells that comprise this cloud (units: K).
-06. CloudDens: Mean (3D) density of all Voronoi cells that comprise this cloud (units: M_\odot kpc^{-3}).
-07. CloudMetal: Mean metallicity of all Voronoi cells that comprise this cloud (units: Z_\odot).
-08. CloudMagPres: Mean magnetic pressure of all Voronoi cells that comprise this cloud (units: K cm^{-3}).
-09. CloudThmPres: Mean thermal pressure of all Voronoi cells that comprise this cloud (units: K cm^{-3}).
-10. CloudRadVel: Mean radial velocity of this cloud (units: km s^{-1}).
-11. CloudRotVel: Mean rotational velocity of this cloud (units: km s^{-1}).
+07. CloudTemp: Mean temperature of all Voronoi cells that comprise this cloud (units: K).
+08. CloudDens: Mean (3D) density of all Voronoi cells that comprise this cloud (units: M_\odot kpc^{-3}).
+09. CloudMetal: Mean metallicity of all Voronoi cells that comprise this cloud (units: Z_\odot).
+10. CloudMagPres: Mean magnetic pressure of all Voronoi cells that comprise this cloud (units: K cm^{-3}).
+11. CloudThmPres: Mean thermal pressure of all Voronoi cells that comprise this cloud (units: K cm^{-3}).
+12. CloudRadVel: Mean radial velocity of this cloud (units: km s^{-1}).
+13. CloudRotVel: Mean rotational velocity of this cloud (units: km s^{-1}).
 
-12. InterfaceTemp: Mean temperature of all Voronoi cells that comprise the interface layer of this cloud (units: K).
-13. InterfaceDens: Mean (3D) density of all Voronoi cells that comprise the interface layer of this cloud (units: M_\odot kpc^{-3}).
-14. InterfaceMetal: Mean metallicity of all Voronoi cells that comprise the interface layer of this cloud (units: Z_\odot).
-15. InterfaceMagPres: Mean thermal pressure of all Voronoi cells that comprise the interface layer of this cloud (units: K cm^{-3}).
-16. InterfaceThmPres: Mean magnetic pressure of all Voronoi cells that comprise the interface layer of this cloud (units: K cm^{-3}).
-17. InterfaceRadVel: Mean radial velocity of the interface layer of this cloud (units: km s^{-1}).
+14. InterfaceTemp: Mean temperature of all Voronoi cells that comprise the interface layer of this cloud (units: K).
+15. InterfaceDens: Mean (3D) density of all Voronoi cells that comprise the interface layer of this cloud (units: M_\odot kpc^{-3}).
+16. InterfaceMetal: Mean metallicity of all Voronoi cells that comprise the interface layer of this cloud (units: Z_\odot).
+17. InterfaceMagPres: Mean thermal pressure of all Voronoi cells that comprise the interface layer of this cloud (units: K cm^{-3}).
+18. InterfaceThmPres: Mean magnetic pressure of all Voronoi cells that comprise the interface layer of this cloud (units: K cm^{-3}).
+19. InterfaceRadVel: Mean radial velocity of the interface layer of this cloud (units: km s^{-1}).
 
-18. BackgroundTemp: Mean temperature of all Voronoi cells that comprise the background layer of this cloud (units: K).
-19. BackgroundDens: Mean (3D) density of all Voronoi cells that comprise the background layer of this cloud (units: M_\odot kpc^{-3}).
-20. BackgroundMetal: Mean metallicity of all Voronoi cells that comprise the background layer of this cloud (units: Z_\odot).
-21. BackgroundMagPres: Mean thermal pressure of all Voronoi cells that comprise the background layer of this cloud (units: K cm^{-3}).
-22. BackgroundThmPres: Mean magnetic pressure of all Voronoi cells that comprise the background layer of this cloud (units: K cm^{-3}).
-23. BackgroundRadVel: Mean radial velocity of the background layer of this cloud (units: km s^{-1}).
+20. BackgroundTemp: Mean temperature of all Voronoi cells that comprise the background layer of this cloud (units: K).
+21. BackgroundDens: Mean (3D) density of all Voronoi cells that comprise the background layer of this cloud (units: M_\odot kpc^{-3}).
+22. BackgroundMetal: Mean metallicity of all Voronoi cells that comprise the background layer of this cloud (units: Z_\odot).
+23. BackgroundMagPres: Mean thermal pressure of all Voronoi cells that comprise the background layer of this cloud (units: K cm^{-3}).
+24. BackgroundThmPres: Mean magnetic pressure of all Voronoi cells that comprise the background layer of this cloud (units: K cm^{-3}).
+25. BackgroundRadVel: Mean radial velocity of the background layer of this cloud (units: km s^{-1}).
 
-24. DistToNearestTenPercentBaryonSatellite: Distance of this cloud to the nearest satellite with a baryon fraction >= 10% (units: kpc). Set to "nan" if no such satellites are present in this halo.
+26. DistToNearestTenPercentBaryonSatellite: Distance of this cloud to the nearest satellite with a baryon fraction >= 10% (units: kpc). Set to "nan" if no such satellites are present in this halo.
 
-25. SubhaloIdOfHostGalaxy: SubhaloID (i.e. index into the TNG50 Subhalo catalog) of the host galaxy. See https://www.tng-project.org/data/docs/specifications/ for more details.
-26. StellarMassOfHostGalaxy: Stellar mass of the host galaxy, measured as the sum of masses of all stars within an aperture of 30kpc (units: M_\odot).
-27. SfrOfHostGalaxy: Star formation rate of the host galaxy, measured as the stellar mass formed within an aperture of 30kpc, averaged over the last 1Gyr (units: M_\odot yr^{-1}).
-28. BhMassOfHostGalaxy: Mass of the central supermassive black hole of the host galaxy (units: M_\odot).
-29. BhMdotOfHostGalaxy: Accretion rate of the central supermassive black hole of the host galaxy (units: M_\odot Gyr^{-1}).
-30. M200cOfHostHalo: Virial mass (M_200c) of the host halo (units: M_\odot).
-31. R200cOfHostHalo: Virial radius (R_200c) of the host halo (units: kpc).
+27. SubhaloIdOfHostGalaxy: SubhaloID (i.e. index into the TNG50 Subhalo catalog) of the host galaxy. See https://www.tng-project.org/data/docs/specifications/ for more details.
+28. StellarMassOfHostGalaxy: Stellar mass of the host galaxy, measured as the sum of masses of all stars within an aperture of 30kpc (units: M_\odot).
+29. SfrOfHostGalaxy: Star formation rate of the host galaxy, measured as the stellar mass formed within an aperture of 30kpc, averaged over the last 1Gyr (units: M_\odot yr^{-1}).
+30. BhMassOfHostGalaxy: Mass of the central supermassive black hole of the host galaxy (units: M_\odot).
+31. BhMdotOfHostGalaxy: Accretion rate of the central supermassive black hole of the host galaxy (units: M_\odot Gyr^{-1}).
+32. M200cOfHostHalo: Virial mass (M_200c) of the host halo (units: M_\odot).
+33. R200cOfHostHalo: Virial radius (R_200c) of the host halo (units: kpc).
