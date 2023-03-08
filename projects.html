@@ -15,14 +15,14 @@ $(document).ready(function() {
     var bg_start = bgArray[Math.floor(Math.random() * bgArray.length)];
 
     // then you can put it right before the variable 'bg'
-    $('body').css('transition', '1s');
+    
     $('body').css('background-image', "url('" + path+bg_start + "')");
     $('body').css('background-color', 'transparent');
     $('body').css('background-size', 'cover');
 
     function nextBackground() {
         var bg = bgArray[Math.floor(Math.random() * bgArray.length)];
-	$('body').css('transition', '1s');
+	
         $('body').css('background-image', "url('" + path+bg + "')");
         $('body').css('background-color', 'transparent');
         $('body').css('background-size', 'cover');
