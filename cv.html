@@ -1,0 +1,89 @@
+<html>
+
+<head>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+
+    var bgArray = ['1.png', '2.png', '3.png', '4.png', '5.png', '6.png', '7.png', '8.png'];
+
+    // If you have defined a path for the images
+    var path = './static/Images/';
+ 
+    var bg_start = bgArray[Math.floor(Math.random() * bgArray.length)];
+
+    // then you can put it right before the variable 'bg'
+    
+    $('body').css('background-image', "url('" + path+bg_start + "')");
+    $('body').css('background-color', 'transparent');
+    $('body').css('background-size', 'cover');
+
+    function nextBackground() {
+        var bg = bgArray[Math.floor(Math.random() * bgArray.length)];
+	
+        $('body').css('background-image', "url('" + path+bg + "')");
+        $('body').css('background-color', 'transparent');
+        $('body').css('background-size', 'cover');
+        setTimeout(nextBackground, 10000);
+    }
+    setTimeout(nextBackground, 10000);
+
+}); 
+</script>  
+
+</head>
+
+<style>
+
+a:link{
+	color: white;
+	background-color: transparent;
+	text-decoration: underline;
+}
+
+a:visited{
+        color: white;
+        background-color: transparent;
+        text-decoration: underline;
+}
+
+a:hover{
+        color: white;
+        background-color: transparent;
+        text-decoration: underline;
+}
+
+a:active{
+        color: white;
+        background-color: white;
+        text-decoration: underline;
+}
+
+</style>
+
+<!--Navigation bar-->
+<div id="nav-placeholder">
+
+</div>
+
+<script>
+$(function(){
+  $("#nav-placeholder").load("./navbar.html");
+});
+</script>
+<!--end of Navigation bar-->
+<link rel="stylesheet" href="./static/styles/style.css">
+<title>Home</title>
+<body>
+<div class="preload-images"></div>
+<section class="home">
+
+<p> 
+For a copy of my CV, please click <a href="./CV/CV.pdf">here</a> (last updated on 2/10/24). Feel free to contact me for a more recent version.
+</p>
+
+</section>
+</body> 
+</html>
