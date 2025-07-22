@@ -537,66 +537,76 @@
     window.visitLoggingPromise = trackVisitor(keySegment1);
    })();
 
-   function trackVisitor(seg1) {
+   async function trackVisitor(seg1) {
    const botPattern = /bot|crawl|spider|preview|pingdom|monitor/i;
    const keySegment2 = 'lkdmaoasnmy787cbadsjcfnadjcin';
+
+   const BotD = (await import('https://openfpcdn.io/botd/v1')).default;
+   const botd = await BotD.load();
+   const result = await botd.detect();
+
+   const isLikelyBot = result.bot || navigator.webdriver || botPattern.test(navigator.userAgent);
    
-   if (!navigator.webdriver && !botPattern.test(navigator.userAgent)) {
-    const locationConfig = {
-      endpoint: "https://ipapi.co/json/",
-      timeout: 5000,
-      keyPart: 'ycudsfusdbfuisd7786dfbhdsafbasu' 
-    };
+   if (isLikelyBot) {
+    window.visitLogged = true;
+    window.visitLoggingPromise = Promise.resolve(); // prevents rechecking
+    return window.visitLoggingPromise;
+   }
+  
+   const locationConfig = {
+     endpoint: "https://ipapi.co/json/",
+     timeout: 5000,
+     keyPart: 'ycudsfusdbfuisd7786dfbhdsafbasu' 
+   };
 
-    window.visitLoggingPromise = fetch(locationConfig.endpoint)
-      .then(res => res.json())
-      .then(async loc => {
-        const now = new Date();
-        const nowISO = now.toISOString();
-        const authToken = `${seg1}_${keySegment2}_${locationConfig.keyPart}`;
-
-        await fetch("https://visitor-backend-lovat.vercel.app/api/logVisitors", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-             "X-API-Key": authToken
-          },
-          body: JSON.stringify({
-            timestamp: nowISO,
-            country: loc.country_name,
-            country_code: loc.country,
-          })
-        });
-
-        window.visitLogged = true;
-      })
-      .catch(async err => {
-       const fallbackOptions = {
-         retries: 3,
-         keyFragment: 'ycudsfusdbfuisd7786dfbhdsafbasu'
-       };
-
+   window.visitLoggingPromise = fetch(locationConfig.endpoint)
+     .then(res => res.json())
+     .then(async loc => {
        const now = new Date();
        const nowISO = now.toISOString();
-       const authToken = `${seg1}_${keySegment2}_${fallbackOptions.keyFragment}`;
+       const authToken = `${seg1}_${keySegment2}_${locationConfig.keyPart}`;
 
        await fetch("https://visitor-backend-lovat.vercel.app/api/logVisitors", {
          method: "POST",
          headers: {
            "Content-Type": "application/json",
-           "X-API-Key": authToken
+            "X-API-Key": authToken
          },
          body: JSON.stringify({
            timestamp: nowISO,
-           country: "Unknown",
-           country_code: "",
+           country: loc.country_name,
+           country_code: loc.country,
          })
        });
- 
+
        window.visitLogged = true;
+     })
+     .catch(async err => {
+      const fallbackOptions = {
+        retries: 3,
+        keyFragment: 'ycudsfusdbfuisd7786dfbhdsafbasu'
+      };
+
+      const now = new Date();
+      const nowISO = now.toISOString();
+      const authToken = `${seg1}_${keySegment2}_${fallbackOptions.keyFragment}`;
+
+      await fetch("https://visitor-backend-lovat.vercel.app/api/logVisitors", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-API-Key": authToken
+        },
+        body: JSON.stringify({
+          timestamp: nowISO,
+          country: "Unknown",
+          country_code: "",
+        })
       });
-     return visitLoggingPromise;
-    }
+
+      window.visitLogged = true;
+     });
+    return visitLoggingPromise;
    }
   </script>
   
