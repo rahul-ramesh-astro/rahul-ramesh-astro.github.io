@@ -621,3 +621,108 @@ body.light .navbar nav a.active {
     padding-top: 10rem !important;
   }
 }
+
+/* Grid layout */
+.media-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  margin-top: 2rem;
+}
+
+.media-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Play button overlay */
+.play-button-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  color: white;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+/* Description text */
+.description {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--text-subtle, #aaa); /* fallback */
+  max-width: 90%;
+}
+
+/* Shared sizing + aspect */
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: black;
+}
+
+/* Thumbnail image container */
+.video-thumb-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.video-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+  display: block;
+  background-color: #333;
+}
+
+/* Video container */
+.inline-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.inline-video.hidden {
+  display: none;
+}
+
+/* Actual video element */
+.inline-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border: none;
+  border-radius: inherit;
+  background-color: black;
+}
+
+/* Light mode adjustments */
+body.light .video-wrapper {
+  background-color: white;
+}
+
+video:fullscreen,
+video:-webkit-full-screen {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  border-radius: 0 !important;
+  background-color: black !important;
+}
+
