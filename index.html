@@ -724,9 +724,6 @@
    })();
 
    async function trackVisitor(seg1) {
-   console.log("User Agent:", navigator.userAgent);
-   console.log("navigator.webdriver:", navigator.webdriver);
-
    const botPattern = /bot|crawl|spider|preview|pingdom|monitor/i;
    const keySegment2 = 'lkdmaoasnmy787cbadsjcfnadjcin';
 
@@ -735,9 +732,7 @@
    // const result = await botd.detect();
  
    const isLikelyBot = (navigator.webdriver === true) || botPattern.test(navigator.userAgent);
-   
-   console.log("Final isLikelyBot:", isLikelyBot);
-  
+    
    if (isLikelyBot) {
     window.visitLogged = true;
     window.visitLoggingPromise = Promise.resolve(); // prevents rechecking
