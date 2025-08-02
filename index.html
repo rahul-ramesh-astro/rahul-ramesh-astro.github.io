@@ -671,19 +671,19 @@
   });
   </script>
 
-<script>
-function startInlineVideo(el, src) {
-  const wrapper = el.closest('.video-wrapper');
-  const thumb = wrapper.querySelector('.video-thumb-container');
-  const inlineVideo = wrapper.querySelector('.inline-video');
-  const video = inlineVideo.querySelector('video');
-
-  thumb.classList.add('hidden');
-  inlineVideo.classList.remove('hidden');
-  video.src = src;
-  video.play();
-}
-</script>
+  <script>
+  function startInlineVideo(el, src) {
+    const wrapper = el.closest('.video-wrapper');
+    const thumb = wrapper.querySelector('.video-thumb-container');
+    const inlineVideo = wrapper.querySelector('.inline-video');
+    const video = inlineVideo.querySelector('video');
+  
+    thumb.classList.add('hidden');
+    inlineVideo.classList.remove('hidden');
+    video.src = src;
+    video.play();
+  }
+  </script>
 
   <script type="module">
    window.visitLoggingPromise = null;
@@ -724,15 +724,21 @@ function startInlineVideo(el, src) {
    })();
 
    async function trackVisitor(seg1) {
+   console.log("User Agent:", navigator.userAgent);
+   console.log("navigator.webdriver:", navigator.webdriver);
+
    const botPattern = /bot|crawl|spider|preview|pingdom|monitor/i;
    const keySegment2 = 'lkdmaoasnmy787cbadsjcfnadjcin';
 
-   const BotD = (await import('https://openfpcdn.io/botd/v1')).default;
-   const botd = await BotD.load();
-   const result = await botd.detect();
-
-   const isLikelyBot = result.bot || navigator.webdriver || botPattern.test(navigator.userAgent);
+   // const BotD = (await import('https://openfpcdn.io/botd/v1')).default;
+   // const botd = await BotD.load();
+   // const result = await botd.detect();
+ 
+   const isLikelyBot = (navigator.webdriver === true) || botPattern.test(navigator.userAgent);
    
+   console.log("Bot detection result:", result);
+   console.log("Final isLikelyBot:", isLikelyBot);
+  
    if (isLikelyBot) {
     window.visitLogged = true;
     window.visitLoggingPromise = Promise.resolve(); // prevents rechecking
